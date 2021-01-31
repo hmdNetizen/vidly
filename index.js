@@ -13,6 +13,7 @@ mongoose
 
 app.use("/api/genres", require("./routes/genres"));
 app.use("/api/customers", require("./routes/customers"));
+app.use("/api/movies", require("./routes/movies"));
 
 const PORT = process.env.PORT || 7000;
 
