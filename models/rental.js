@@ -6,9 +6,10 @@ const rentalSchema = new mongoose.Schema({
     type: new mongoose.Schema({
       name: {
         type: String,
-        require: true,
+        required: true,
         minlength: 5,
         maxlength: 50,
+        trim: true,
       },
       isGold: {
         type: Boolean,
@@ -39,6 +40,7 @@ const rentalSchema = new mongoose.Schema({
         max: 255,
       },
     }),
+    required: true,
   },
   dateOut: {
     type: Date,
@@ -64,5 +66,6 @@ function validateRental(rental) {
 
   return schema.validate(rental);
 }
+
 exports.Rental = Rental;
 exports.validate = validateRental;
