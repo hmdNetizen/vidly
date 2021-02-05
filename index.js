@@ -1,9 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const config = require("config");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
 const app = express();
 app.use(express.json());
+
+if (!config.get("jwtPrivateKey")) {
+  console.error("Fatal Error!: jwtPrivateKey is not defined");
+  process.exit(1);
+}
 
 mongoose
   .connect("mongodb://localhost:27017/vidly", {
