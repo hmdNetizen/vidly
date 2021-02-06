@@ -6,6 +6,7 @@ const { Genre, validate } = require("../models/genre");
 
 // Get genre
 router.get("/", async (req, res) => {
+  throw new Error("Could not get the genres");
   const genres = await Genre.find().sort("name");
   res.send(genres);
 });
@@ -62,7 +63,7 @@ router.delete("/:id", [auth, admin], async (req, res) => {
 
   if (!genre)
     return res
-      .status(401)
+      .status(400)
       .send("The genre with the speicified ID is not found");
 
   res.send(genre);
